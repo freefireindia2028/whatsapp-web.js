@@ -4,7 +4,12 @@ const qrcode = require('qrcode-terminal');
 const client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage'
+        ]
     }
 });
 
@@ -19,7 +24,7 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.body.toLowerCase() === 'hi') {
-        message.reply('Hello! I am your free 24/7 WhatsApp Bot 🤖');
+        message.reply('Hello! I am your 24/7 WhatsApp Bot 🤖');
     }
 });
 
